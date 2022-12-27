@@ -91,3 +91,73 @@ console.log(str); // Str
 
 str = str.toUpperCase();
 console.log(str); // STR
+
+// =============================[boolean]=============================
+// 불리언(boolean) 타입의 값은 논리적 참, 거짓을 나타내는 true와 false뿐이다.
+var foo = true;
+var bar = false;
+
+// typeof 연산자는 타입을 나타내는 문자열을 반환한다.
+console.log(typeof foo); // boolean
+console.log(typeof bar); // boolean
+
+// 비어있는 문자열과 null, undefined, 숫자 0은 false로 간주된다.
+
+// =============================[undefined]=============================
+// undefined 타입의 값은 undefined가 유일하며, 선언 이후 값을 할당하지 않은 변수는 undefined 값을 가진다.
+// 즉, 선언은 되었지만 값을 할당하지 않은 변수에 접근하거나 존재하지 않는 객체 프로퍼티에 접근할 경우 undefined가 반환된다.
+// 이는 변수 선언에 의해 확보된 메모리 공간을 처음 할당이 이루어질 때까지 빈 상태(보통 비어있지 않고, 쓰레기 값(grabage value)이 들어있다)로 두지 않고 자바스크립트 엔진이 undefined로 초기화하기 때문이다.
+var foo_new;
+console.log(foo); // undefined
+
+// 이 처럼 undefined는 개발자가 의도적으로 할당한 값이 아니라, 자바스크립트 엔진에 의해 초기화된 값이다.
+// 변수를 참조했을 때 undefined가 반환된다면, 참조한 변수가 선언 이후 값이 할당된 적이 없는 변수라는 것을 개발자는 확인할 수 있다.
+// 하지만 개발자가 의도적으로 undefined를 할당하는 하는 것은 undefined의 본래의 취지와 어긋날 뿐더러,
+// 혼란을 발생시킬 수 있기에 권장되는 방법은 아니다.
+// 만약 의도적으로 변수의 값이 없다는 것을 명시하고자 하는 경우에는 undefined가 아닌, null을 사용하면 된다.
+
+// =============================[null]=============================
+// null 타입의 값은 null이 유일하며, 자바스크립트 내에서는 대소문자를 구별(case-sensitive)하므로 null은 Null, NULL등과 다르다.
+// 프로그래밍 언어에서 null은 의도적으로 변수에 값이 없다는 것을 명시할 때 사용한다.
+// 이는 변수가 기억하는 메모리 어드레스의 참조 정보를 제거하는 것을 의미하며, 자바스크립트 엔진은 누구도 참조하지 않는 메모리 영역에 대해 가비지 콜렉션을 수행할 것이다.
+var foo = "Lee";
+foo = null; // 참조 정보가 제거됨
+
+// 또한 함수가 호출되었으나 유효한 값을 반환할 수 없는 경우, 명시적으로 null을 반환하기도 한다.
+// 예를 들어, 조건에 부합하는 HTML 요소를 검색해 반환하는 Document.querySelector()는 조건에 부합하는 HTML 요소를 검색할 수 없는 경우, null을 반환한다.
+var element = document.querySelector(".myElem");
+console.log(element);
+
+// 타입을 나타내는 문자열을 반환하는 typeof 연산자로 null 값을 연산해 보면 null이 아닌 object가 나오는데,
+// 이는 자바스크립트의 걸계상의 오류이다.
+var foo = null;
+console.log(typeof foo);
+
+// 따라서 null 타입을 확인할 때에는 typeof 연산자를 사용하지 않고, 일치 연산자(===)사용한다.
+var foo = null;
+console.log(typeof foo === null);   // false
+console.log(foo === null);          // true
+
+// =============================[symbol]=============================
+// 심볼(symbol)은 ES6에서 새롭게 추가된 7번째 타입으로 변경 불가능한 원시 타입의 값이다.
+// 심볼은 주로 이름의 충돌 위험이 없는 유일한 객체의 프로퍼티 키(property key)를 만들기 위해 사용한다.
+// 심볼은 Symbol 함수를 호출하여 생성하며, 이 때 생성된 심볼 값은 다른 심볼 값들과 다른 유일한 심볼 값이다.
+var key = Symbol("key");
+console.log(typeof key);
+
+var obj = {};
+obj[key] = "value";
+console.log(obj[key]); // value
+
+// =============================[변수]=============================
+// 변수(variable)는 프로그램에서 사용되는 데이터를 일정 기간 동안 기억하여 필요할 때에 다시 사용하기 위해 데이터에 고유의 이름인 식별자(identifier)를 명시한 것이다.
+// 변수에 명시한 고유한 식별자를 변수명이라 하고 변수로 참조할 수 있는 데이터를 변수 값이라고 한다.
+// 변수는 var, let, const 키워드를 사용하여 선언하고 할당 연산자를 사용해 값을 할당한다.
+// 그리고 식별자인 변수 명을 사용해 변수에 저장된 값을 참조한다.
+var score;  // 변수의 선언
+score = 80; // 값의 할당
+score = 90; // 값의 재할당
+score;      // 변수의 참조
+
+// 변수의 선언과 할당
+var average = (50 + 100) / 2;
